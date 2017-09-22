@@ -1,0 +1,14 @@
+{
+  "mysql": {
+    "user": "ticket",
+    "password": "ZFm57duclTIj8ZQC",
+    "database": "ticket",
+    "host": "localhost",
+    "port": 3306
+  },
+  "behavior": {
+    "OneTimeTicket": true,
+    "EnableFrontEnd": true
+  },
+  "prefix": "TICKET_"
+}

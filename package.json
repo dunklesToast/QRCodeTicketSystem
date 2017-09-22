@@ -1,0 +1,14 @@
+{
+  "name": "qrticketscansystem",
+  "version": "1.0.0",
+  "description": "MySQL Ticket System",
+  "main": "src/server.js",
+  "author": "Tom Sacher",
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "mysql": "^2.14.1",
+    "socket.io": "^2.0.3",
+    "uuid": "^3.1.0"
+  }
+}
