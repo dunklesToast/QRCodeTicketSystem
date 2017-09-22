@@ -26,8 +26,10 @@ module.exports = {
             })
         })
     },
+    //TODO Check if ticket invalidate
     checkTicket: (ticket) => {
         return new Promise((resolve, reject) => {
+            console.debug(ticket);
             if (ticket) {
                 if (ticket.id) {
                     connection.query('SELECT * FROM tickets WHERE id=' + connection.escape(ticket.id), (err, result) => {
@@ -52,6 +54,7 @@ module.exports = {
     },
     invalidateTicket: (ticket) => {
         return new Promise((resolve, reject) => {
+            console.debug(ticket);
             if (ticket) {
                 if (ticket.id) {
                     connection.query('UPDATE `tickets` SET `VALID`=0 WHERE id=' + connection.escape(ticket.id), (err) => {

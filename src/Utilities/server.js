@@ -54,7 +54,7 @@ io.on('connection', (socket) => {
     });
     socket.on('scan', (msg) => {
         if (msg.id) {
-            Database.checkTicket(msg.id).then((result) => {
+            Database.checkTicket(msg).then((result) => {
                 if(result[0]){
                     socket.emit('validTicket', result[0].NAME);
                 }else {
