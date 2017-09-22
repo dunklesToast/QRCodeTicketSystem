@@ -18,9 +18,9 @@ module.exports = {
             connection.connect((err) => {
                 if (err) reject(err);
                 else {
-                    connection.query('CREATE TABLE IF NOT EXISTS `ticket`.`tickets` ( `ID` VARCHAR(36) NOT NULL , `NAME` VARCHAR(200) NOT NULL , `BOOKED` DATE NOT NULL ) ENGINE = InnoDB;', (err) => {
+                    connection.query('CREATE TABLE IF NOT EXISTS `'+config.mysql.database+'`.`tickets` ( `ID` VARCHAR(36) NOT NULL , `NAME` VARCHAR(200) NOT NULL , `BOOKED` DATE NOT NULL ) ENGINE = InnoDB;', (err) => {
                         if (err) reject(err);
-                        else resolve(`${config.user}@${config.host}`)
+                        else resolve(`${config.mysql.user}@${config.mysql.host}`)
                     })
                 }
             })

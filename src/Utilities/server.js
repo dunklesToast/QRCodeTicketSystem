@@ -43,6 +43,7 @@ const httpApp = require('http').createServer(function (req, res) {
 const io = require('socket.io').listen(httpApp);
 
 io.on('connection', (socket) => {
+    console.debug('Connection!');
     socket.on('start', (msg) => {
         if (msg.name) {
             console.log(msg.name + ' connected!');
@@ -53,8 +54,16 @@ io.on('connection', (socket) => {
     });
     socket.on('scan', (msg) => {
         if (msg.id) {
-            //using a hash to make sure the ticket is not created by somebody else
-            Database.checkTicket(msg.id, msg.hash)
+            Database.checkTicket(msg.id).then((result) => {
+                if(result[0]){
+                    socket.emit('validTicket', result[0].NAME);
+                }else {
+                    socket.emit('validTicket', false);
+                }
+            }).catch((err) => {
+                console.debug(err);
+                socket.emit('validTicket', false);
+            })
         }
     })
 });
